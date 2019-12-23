@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @film.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @film.description %>
+</p>
+
+<p>
+  <%= image_tag @film.image.url(:large) if @film.image?%>
+</p>
+<%= link_to 'Edit', edit_film_path(@film) %> |
+<%= link_to 'Back', films_path %>

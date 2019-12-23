@@ -1,0 +1,27 @@
+<div class = "container">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Film:</strong>
+    <%= Film.find(@seance.film_id).name %>
+  </p>
+  <p>
+    <strong>Description</strong>
+    <%= Film.find(@seance.film_id).description %>
+  </p>
+
+  <p>
+    <strong>Time:</strong>
+    <%= @seance.time %>
+  </p>
+
+  <p>
+    <strong>Hall:</strong>
+    <%= @seance.hall_id %>
+  </p>
+
+  <div><%= image_tag Film.find(@seance.film_id).image.url(:large) %> </div>
+
+  <%= link_to 'Edit', edit_seance_path(@seance) %> |
+  <%= link_to 'Back', seances_path %>
+</div>
