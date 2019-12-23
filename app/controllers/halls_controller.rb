@@ -1,5 +1,6 @@
 class HallsController < ApplicationController
   before_action :set_hall, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_admin
 
   # GET /halls
   # GET /halls.json
@@ -71,4 +72,10 @@ class HallsController < ApplicationController
     def hall_params
       params.require(:hall).permit(:title)
     end
+
+  def authorize_admin
+    if !(current_user && current_user.admin == true)
+      redirect_to "/seances"
+    end
+  end
 end

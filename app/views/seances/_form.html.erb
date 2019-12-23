@@ -10,20 +10,26 @@
       </ul>
     </div>
   <% end %>
-  <%= form.label :Film %>
-  <%= form.select :film_id, Film.all.pluck(:name,:id),{class: "form-control"}%>
-
   <div class="field">
-    <%= form.label :time %>
-    <%= form.time_select :time %>
+    <%= form.label :"Film: " %>
+    <%= form.select :film_id, Film.all.pluck(:name,:id),{class: "form-control"}%>
+  </div>
+  <div class="field">
+    <%= form.label :"Hall: " %>
+    <%= form.select :hall_id, Hall.all.pluck(:title,:id),{class: "form-control"}%>
   </div>
 
   <div class="field">
-    <%= form.label :hall_id %>
-    <%= form.number_field :hall_id %>
+    <%= form.label :"Time: " %>
+    <%= form.time_select :time, class:"form-control" %>
   </div>
+
+<!--  <div class="field">-->
+    <%#= form.label :hall_id %>
+    <%#= form.number_field :hall_id %>
+<!--  </div>-->
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :Submit, class:"btn btn-dark"%>
   </div>
 <% end %>

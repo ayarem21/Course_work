@@ -1,5 +1,6 @@
 class FilmsController < ApplicationController
   before_action :set_film, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_admin, only: [:index, :new, :edit, :create, :update, :destroy]
 
   # GET /films
   # GET /films.json
@@ -63,12 +64,18 @@ class FilmsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_film
-      @film = Film.find(params[:id])
-    end
+  def set_film
+    @film = Film.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def film_params
-      params.require(:film).permit(:name, :description, :image)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def film_params
+    params.require(:film).permit(:name, :description, :image)
+  end
+
+  def authorize_admin
+    if !(current_user && current_user.admin == true)
+      redirect_to "/seances"
     end
+  end
 end

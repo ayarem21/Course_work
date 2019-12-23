@@ -1,5 +1,7 @@
-<h1>New Seance</h1>
+<div class="container alert alert-light form-group">
+  <h1>New Seance</h1>
 
-<%= render 'form', seance: @seance %>
-
-<%= link_to 'Back', seances_path %>
+  <%= render 'form', seance: @seance %>
+  <hr>
+  <%= link_to 'Back', seances_path, class:"btn btn-secondary"  %>
+</div>

@@ -1,9 +1,9 @@
-<div class = "container">
+<div class="container alert alert-light form-group">
   <p id="notice"><%= notice %></p>
 
   <p>
     <strong>Film:</strong>
-    <%= Film.find(@seance.film_id).name %>
+    <%= link_to "#{Film.find(@seance.film_id).name }", film_path %>
   </p>
   <p>
     <strong>Description</strong>
@@ -21,7 +21,7 @@
   </p>
 
   <div><%= image_tag Film.find(@seance.film_id).image.url(:large) %> </div>
-
-  <%= link_to 'Edit', edit_seance_path(@seance) %> |
-  <%= link_to 'Back', seances_path %>
+  <hr>
+  <%= link_to 'Edit', edit_seance_path(@seance), class:"btn btn-info" %>
+  <%= link_to 'Back', seances_path , class:"btn btn-secondary"%>
 </div>
