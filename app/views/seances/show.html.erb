@@ -1,27 +1,73 @@
+<style>
+  .somebody {
+    color: red;
+  }
+  .somebody1 {
+    color: red;
+  }
+  .somebody:hover {
+    color: #730E15;
+  }
+
+  .devil {
+    display: flex;
+    /*justify-content: space-around;*/
+
+  }
+    .second_devil {
+      padding: 40px;
+    }
+</style>
+
 <div class="container alert alert-light form-group">
   <p id="notice"><%= notice %></p>
+  <%= link_to 'Back', seances_path , class:"somebody"%>
+  <hr>
+  <div class = "devil">
+    <div class = "first_devil">
+      <p>
+        <h3 class="somebody1"><%= Film.find(@seance.film_id).name %></h3>
+      </p>
+      <div><%= image_tag Film.find(@seance.film_id).image.url(:large) %> </div>
+      </div>
 
+      <div class = "second_devil">
+
+      <p>
+        <strong>Time:</strong>
+        <%= @seance.time %>
+      </p>
+
+      <p>
+        <strong>Hall:</strong>
+        <%= @seance.hall_id %>
+      </p>
+
+      <p>
+        <strong>Running time:</strong>
+        <%= Film.find(@seance.film_id).triv %>
+      </p>
+
+      <p>
+        <strong>Rated:</strong>
+        <%= Film.find(@seance.film_id).obmezh %>
+      </p>
+
+      <p>
+        <strong>Format:</strong>
+        <%= Film.find(@seance.film_id).format %>
+      </p>
+    </div>
+  </div>
+  <hr>
   <p>
-    <strong>Film:</strong>
-    <%= link_to "#{Film.find(@seance.film_id).name }", film_path %>
-  </p>
-  <p>
-    <strong>Description</strong>
+    <strong>Description:</strong>
+    <br>
     <%= Film.find(@seance.film_id).description %>
   </p>
-
-  <p>
-    <strong>Time:</strong>
-    <%= @seance.time %>
-  </p>
-
-  <p>
-    <strong>Hall:</strong>
-    <%= @seance.hall_id %>
-  </p>
-
-  <div><%= image_tag Film.find(@seance.film_id).image.url(:large) %> </div>
   <hr>
-  <%= link_to 'Edit', edit_seance_path(@seance), class:"btn btn-info" %>
-  <%= link_to 'Back', seances_path , class:"btn btn-secondary"%>
+  <% if current_user && current_user.admin == true %>
+    <%= link_to 'Edit', edit_seance_path(@seance), class:"btn btn-info" %>
+    <% end %>
+
 </div>

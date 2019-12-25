@@ -9,45 +9,61 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/cea9c7549d.js" crossorigin="anonymous"></script>
     <head>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <i class="fab fa-accessible-icon" style="color:white"></i>        <%= link_to "Blog", seances_path, class: "navbar-brand "%>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <ul class="nav navbar-nav ml-auto">
-          <% if current_user && current_user.admin == true%>
-            <li class = "nav-item">
-              <%= link_to 'Add seance', new_seance_path, class: "nav-link"%>
-            </li>
-            <li class = "nav-item">
-              <%= link_to 'Add Film', new_film_path, class: "nav-link"%>
-            </li>
-            <li class = "nav-item">
-              <%= link_to 'Add Hall', new_hall_path, class: "nav-link"%>
-            </li>
-          <% end %>
-          <% if current_user %>
-            <li class="nav-item">
-              <a class="nav-link" href="#" style="color:white"><span class="fas fa-user"></span><%= current_user.email %></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout" style="color:white"><span class="fas fa-sign-in-alt"></span>Logout</a>
-            </li>
-          <% else %>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/registration" style="color:white"><span class="fas fa-user"></span>Create account</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login" style="color:white"><span class="fas fa-sign-in-alt" ></span>Log in</a>
-            </li>
-          <% end %>
-        </ul>
-        </div>
-      </nav>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
   </head>
 
-  <body class= "sp-3 mb-2 bg-secondary text-white">
-    <%= yield %>
+  <body src="" style = "background-image: url(https://i.imgur.com/N4R0oQ6.jpg);background-size: 100%;background-attachment: fixed">
+  <div class = "container alert alert-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+      <i class="fab fa-accessible-icon" style="color:white"></i>        <%= link_to "Blog", seances_path, class: "navbar-brand "%>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="nav navbar-nav ml-auto">
+        <% if current_user && current_user.admin == true%>
+          <li class = "nav-item">
+            <%= link_to 'Add seance', new_seance_path, class: "nav-link"%>
+          </li>
+          <li class = "nav-item">
+            <%= link_to 'Add Film', new_film_path, class: "nav-link"%>
+          </li>
+          <li class = "nav-item">
+            <%= link_to 'Add Hall', new_hall_path, class: "nav-link"%>
+          </li>
+        <% end %>
+        <% if current_user %>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color:white"><span class="fas fa-user"></span><%= current_user.email %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout" style="color:white"><span class="fas fa-sign-in-alt"></span>Logout</a>
+          </li>
+        <% else %>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/registration" style="color:white"><span class="fas fa-user"></span>Create account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login" style="color:white"><span class="fas fa-sign-in-alt" ></span>Log in</a>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <div class = "first_child">
+      <%= yield %>
+    </div>
+  </div>
   </body>
 </html>

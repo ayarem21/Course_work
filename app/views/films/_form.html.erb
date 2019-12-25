@@ -24,8 +24,18 @@
   <div class="field">
     <%= form.file_field :image %>
   </div>
-
-
+  <div>
+    <%= form.label :"Running time: " %>
+    <%= form.text_field :triv %>
+  </div>
+  <div>
+    <%= form.label :"Rated: " %>
+    <%= form.text_field :obmezh %>
+  </div>
+  <div>
+    <%= form.label :"Format: " %>
+    <%= form.text_field :format %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

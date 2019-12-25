@@ -1,50 +1,51 @@
-<div class = "container">
-<p id="notice"><%= notice %></p>
+<style>
+  .first_child {
 
-<h3>Seances</h3>
-</div>
+    display: grid;
+    padding: 5px;
+    margin: 0 -5px;
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+  }
+  .somebody {
+    color: red;
+  }
 
-<!--<style>-->
-<!--  .container {-->
-<!--    display: flex;-->
-<!--    flex-direction: row;-->
-<!--    justify-content: flex-start;-->
-<!--  }-->
-<!--</style>-->
+  .somebody:hover {
+    color: #730E15;
+  }
+
+  .contr {
+  /*padding: 10px ;*/
+  }
+</style>
+
+
+<!--<p id="notice"><%#= notice %></p>-->
 <% @seances.each do |seance| %>
-  <div class="container alert alert-light">
-    <div class="list group-item">
-      <div>
-        <i class="fas fa-address-book"></i>
-        <strong>Film:</strong>
-      </div>
-      <div><%= Film.find(seance.film_id).name %> </div>
+  <div class="container alert alert-dark contr">
 
+      <h3 align="center">
+      <%= link_to "#{Film.find(seance.film_id).name}", seance, class:"somebody" %>
 
-      <div>
-        <i class="fab fa-accusoft"></i>
-        <strong>Time:</strong>
-        <%= seance.time.strftime("at %I:%M%p")  %>
-      </div>
+      </h3>
 
-      <div>
-        <i class="fab fa-adversal"></i>
-        <strong>Hall:</strong>
-        <%= Hall.find(seance.hall_id).title %>
-      </div>
+      <div align="center"><%= image_tag Film.find(seance.film_id).image.url(:large) %> </div>
 
+      <h4 align="center" class="somebody"><%= seance.time %></h4>
 
-
-      <div>
-        <div><%= link_to 'Show', seance, class:"btn btn-outline-success" %>
+      <div class = "conta">
           <% if current_user && current_user.admin == true%>
+          <div>
             <%= link_to 'Edit', edit_seance_path(seance), class:"btn btn-outline-warning"%>
+          </div>
+
+          <div>
             <%= link_to 'Destroy', seance, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger"%>
+          </div>
           <% end %>
-        </div>
       </div>
   </div>
-  </div>
+
 <% end %>
 
 

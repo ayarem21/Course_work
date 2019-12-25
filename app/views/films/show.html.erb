@@ -1,6 +1,6 @@
 <div class="container alert alert-light">
   <p id="notice"><%= notice %></p>
-
+  <%= link_to 'Back', seances_path, class:"somebody"%>
   <p>
     <strong>Name:</strong>
     <%= @film.name %>
@@ -14,6 +14,8 @@
   <p>
     <%= image_tag @film.image.url(:large) if @film.image?%>
   </p>
+
+  <
   <%= link_to 'Edit', edit_film_path(@film), class:"btn btn-info" %> 
-  <%= link_to 'Back', seances_path, class:"btn btn-secondary"%>
+
 </div>
