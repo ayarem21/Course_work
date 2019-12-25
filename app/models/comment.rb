@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  belongs_to :film
+  belongs_to :film, dependent: :destroy
 end
