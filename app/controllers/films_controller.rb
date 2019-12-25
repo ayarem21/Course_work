@@ -1,6 +1,6 @@
 class FilmsController < ApplicationController
   before_action :set_film, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_admin, only: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :authorize_admin, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /films
   # GET /films.json

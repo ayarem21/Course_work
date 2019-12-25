@@ -1,6 +1,17 @@
+<style>
+  .somebody {
+    color: red;
+  }
+  .somebody:hover {
+    color: #730E15;
+  }
+</style>
+
 <div class="container alert alert-light">
   <p id="notice"><%= notice %></p>
-  <%= link_to 'Back', seances_path, class:"somebody"%>
+  <hr>
+  <%= link_to 'To home page', seances_path, class:"somebody"%>
+  <hr>
   <p>
     <strong>Name:</strong>
     <%= @film.name %>
@@ -15,7 +26,38 @@
     <%= image_tag @film.image.url(:large) if @film.image?%>
   </p>
 
-  <
-  <%= link_to 'Edit', edit_film_path(@film), class:"btn btn-info" %> 
-
+  <% if current_user && current_user.admin == true %>
+    <%= link_to 'Edit', edit_film_path(@film), class:"btn btn-info" %>
+  <% end %>
 </div>
+<hr>
+<% @film.comments.each do |comment| %>
+  <div class="container alert alert-lite contr">
+
+    <h4><%=User.find_by_id(comment.user_id).nickname%>: <%= comment.body %></h4>
+
+  </div>
+
+<% end %>
+
+<hr>
+
+<div class="container new_comment_form">
+  <div class="coments" id="form_new">
+    <div id="form_comment">
+      <% if current_user %>
+        <h3>Add comment:</h3>
+        <%= form_with(model: [ @film, @film.comments.build ]) do |form| %>
+          <p>
+            <%= form.label :comment %><br>
+            <%= form.text_area :body, class:'form-control' %>
+          </p>
+          <p>
+            <%= form.submit class:'btn btn btn-danger btn-lg ' %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

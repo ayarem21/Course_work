@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
   resources :users
-  resources :films
+  resources :films do
+    resources :comments
+  end
   resources :seances
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

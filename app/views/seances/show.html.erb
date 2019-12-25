@@ -21,12 +21,12 @@
 
 <div class="container alert alert-light form-group">
   <p id="notice"><%= notice %></p>
-  <%= link_to 'Back', seances_path , class:"somebody"%>
+  <%= link_to 'To home page', seances_path , class:"somebody"%>
   <hr>
   <div class = "devil">
     <div class = "first_devil">
       <p>
-        <h3 class="somebody1"><%= Film.find(@seance.film_id).name %></h3>
+        <h3 class="somebody1"><%= link_to "#{Film.find(@seance.film_id).name}",  film_path, class:"somebody"%></h3>
       </p>
       <div><%= image_tag Film.find(@seance.film_id).image.url(:large) %> </div>
       </div>
