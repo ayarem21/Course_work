@@ -26,7 +26,7 @@
   <div class = "devil">
     <div class = "first_devil">
       <p>
-        <h3 class="somebody1"><%= link_to "#{Film.find(@seance.film_id).name}",  film_path, class:"somebody"%></h3>
+        <h3 class="somebody1"><%= link_to "#{Film.find(@seance.film_id).name}",  film_path(@seance.film_id), class:"somebody"%></h3>
       </p>
       <div><%= image_tag Film.find(@seance.film_id).image.url(:large) %> </div>
       </div>
