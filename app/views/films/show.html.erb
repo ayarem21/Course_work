@@ -25,7 +25,13 @@
   <p>
     <%= image_tag @film.image.url(:large) if @film.image?%>
   </p>
-
+  <hr>
+  <% if @film.youtube_link? %>
+    <iframe width="420" height="315"
+        src="<%=@film.youtube_link%>">
+    </iframe>
+  <% end %>
+<hr>
   <% if current_user && current_user.admin == true %>
     <%= link_to 'Edit', edit_film_path(@film), class:"btn btn-info" %>
   <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_25_181241) do
+ActiveRecord::Schema.define(version: 2019_12_26_080135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_12_25_181241) do
     t.string "triv"
     t.string "obmezh"
     t.string "format"
+    t.string "youtube_link"
   end
 
   create_table "halls", force: :cascade do |t|

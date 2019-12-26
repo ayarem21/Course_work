@@ -40,7 +40,7 @@
 
       <p>
         <strong>Hall:</strong>
-        <%= @seance.hall_id %>
+        <%= Hall.find(@seance.hall_id).title %>
       </p>
 
       <p>
@@ -59,12 +59,20 @@
       </p>
     </div>
   </div>
+
   <hr>
   <p>
     <strong>Description:</strong>
     <br>
     <%= Film.find(@seance.film_id).description %>
   </p>
+
+  <% if Film.find(@seance.film_id).youtube_link? %>
+    <hr>
+    <iframe width="600" height="400"
+            src="<%=Film.find(@seance.film_id).youtube_link%>">
+    </iframe>
+  <% end %>
   <hr>
   <% if current_user && current_user.admin == true %>
     <%= link_to 'Edit', edit_seance_path(@seance), class:"btn btn-info" %>
